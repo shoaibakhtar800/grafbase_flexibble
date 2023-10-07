@@ -32,5 +32,18 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.no-scrollbar::-webkit-scrollbar': {
+          display: 'none',
+        },
+        '.no-scrollbar': {
+          '-ms-overflow-style': 'none',  /* IE and Edge */
+          scrollbarWidth: 'none',  /* Firefox */
+        },
+      }
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },
+  ],
 };
